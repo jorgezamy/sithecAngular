@@ -1,0 +1,35 @@
+<div class="container d-flex align-items-center min-vh-100">
+  <div class="row gx-5">
+    <div class="col">
+      <div
+        class="card"
+        style="width: 200px; height: 250px"
+        (click)="onCardClick('rick&morthy')"
+      >
+        <img
+          class="card-image-top"
+          src="https://rickandmortyapi.com/api/character/avatar/143.jpeg"
+        />
+        <div class="card-body">The Rick and Morty API</div>
+      </div>
+    </div>
+    <div class="col">
+      <div
+        class="card"
+        style="width: 200px; height: 250px"
+        (click)="onCardClick('pokeApi')"
+      >
+        <div
+          class="d-flex justify-content-center align-items-center overflow-hidden"
+          style="height: 100%"
+        >
+          <img
+            width="100%"
+            src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+          />
+        </div>
+        <div class="card-body">The Rick and Morty API</div>
+      </div>
+    </div>
+  </div>
+</div>
