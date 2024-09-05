@@ -1,11 +1,34 @@
-<table class="table table-hover">
-  <thead></thead>
-  <tbody>
-    <tr *ngFor="let character of rows">
-      <th scope="row">{{ character.id }}</th>
-      <td>{{ character.name }}</td>
-      <td>{{ character.status }}</td>
-      <td>{{ character.created | date : "short" }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <table class="table table-hover">
+    <thead></thead>
+    <tbody>
+      <tr *ngFor="let character of rows">
+        <th scope="row">{{ character.id }}</th>
+        <td>{{ character.name }}</td>
+        <td>{{ character.status }}</td>
+        <td>{{ character.created | date : "short" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav class="pagination">
+    <li class="page-item">
+      <a
+        href="#"
+        class="page-link"
+        [class.disabled]="!prev"
+        (click)="onPrev($event)"
+        >Previous</a
+      >
+    </li>
+    <li class="page-item">
+      <a
+        href="#"
+        class="page-link"
+        [class.disabled]="!next"
+        (click)="onNext($event)"
+        >Next</a
+      >
+    </li>
+  </nav>
+</div>

@@ -9,10 +9,12 @@ import { ICharacterResponse } from '../../../models/rick&Morthy/character.interf
 export class ApiService {
   constructor(private _http: HttpClient) {}
 
-  getApiRickAndMorthy(page: number = 1): Observable<ICharacterResponse> {
-    let baseURL = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  // url = `https://rickandmortyapi.com/api/character/?page=1`;
 
-    return this._http.get<ICharacterResponse>(baseURL);
+  getApiRickAndMorthy(apiURL: string): Observable<ICharacterResponse> {
+    // let baseURL = `https://rickandmortyapi.com/api/character/?page=${page}`;
+
+    return this._http.get<ICharacterResponse>(apiURL);
     // .pipe(
     //   map((data) => {
     //     data.results = data.results.map((character) => ({

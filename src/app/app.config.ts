@@ -8,7 +8,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import localMX from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     { provide: LOCALE_ID, useValue: 'es' }, // import
   ],
 };
