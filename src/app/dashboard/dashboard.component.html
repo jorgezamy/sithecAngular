@@ -1,8 +1,15 @@
 <div class="container">
-  <table class="table table-hover">
-    <thead></thead>
+  <table class="table table-hover table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Created</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr *ngFor="let character of rows">
+      <tr *ngFor="let character of rows" (click)="loadCharacter(character.id)">
         <th scope="row">{{ character.id }}</th>
         <td>{{ character.name }}</td>
         <td>{{ character.status }}</td>
@@ -12,6 +19,10 @@
   </table>
 
   <nav class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a href="#" class="page-link" (click)="loadPage(1, $event)">First</a>
+    </li>
+
     <li class="page-item">
       <a
         href="#"
@@ -21,6 +32,17 @@
         >Previous</a
       >
     </li>
+
+    <li
+      *ngFor="let page of getPageRange()"
+      class="page-item"
+      [class.active]="currentPage === page"
+    >
+      <a href="#" class="page-link" (click)="loadPage(page, $event)">{{
+        page
+      }}</a>
+    </li>
+
     <li class="page-item">
       <a
         href="#"
@@ -28,6 +50,12 @@
         [class.disabled]="!next"
         (click)="onNext($event)"
         >Next</a
+      >
+    </li>
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a href="#" class="page-link" (click)="loadPage(totalPages, $event)"
+        >Last</a
       >
     </li>
   </nav>

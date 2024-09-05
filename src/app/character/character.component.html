@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="card" style="width: 80%">
+    <h5 class="card-header">Character Details</h5>
+    <div class="row g-0">
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+        <img src="{{ character?.image }}" style="width: 10rem" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ character?.name }}</h5>
+          <div class="row mt-4">
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">ID</div>
+              <div class="col">
+                {{ character?.id }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Gender</div>
+              <div class="col">
+                {{ character?.gender }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Species</div>
+              <div class="col">
+                {{ character?.species }}
+              </div>
+            </div>
+
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">Created</div>
+              <div class="col">
+                {{ character?.created | date }}
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">Origin</div>
+              <div class="col">
+                {{ character?.origin?.name }}
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">Location</div>
+              <div class="col">
+                {{ character?.location?.name }}
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Status</div>
+              <div class="col">
+                {{ character?.status }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Episodes</div>
+              <div class="col">
+                {{ character?.episode?.length }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Type</div>
+              <div class="col">
+                {{ character?.type != "" ? character?.type : "Undefined" }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted text-center mt-4">Rick and Morthy</div>
+  </div>
+</div>
