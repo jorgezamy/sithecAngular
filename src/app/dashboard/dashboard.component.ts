@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
-import { ICharacter } from '../../models/rick&Morthy/character.interface';
+import {
+  ICharacter,
+  ICharacterResponse,
+} from '../../models/rick&Morthy/character.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })

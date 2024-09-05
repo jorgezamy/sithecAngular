@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<table class="table table-hover">
+  <thead></thead>
+  <tbody>
+    <tr *ngFor="let character of rows">
+      <th scope="row">{{ character.id }}</th>
+      <td>{{ character.name }}</td>
+      <td>{{ character.status }}</td>
+      <td>{{ character.created | date : "short" }}</td>
+    </tr>
+  </tbody>
+</table>
