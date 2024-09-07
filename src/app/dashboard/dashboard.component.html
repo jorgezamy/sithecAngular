@@ -1,62 +1,92 @@
 <div class="container">
-  <table class="table table-hover table-striped">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Status</th>
-        <th scope="col">Created</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let character of rows" (click)="loadCharacter(character.id)">
-        <th scope="row">{{ character.id }}</th>
-        <td>{{ character.name }}</td>
-        <td>{{ character.status }}</td>
-        <td>{{ character.created | date : "short" }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row w-100 d-flex">
+    <div class="row">
+      <table class="table table-hover table-striped mt-4">
+        <thead class="table-dark">
+          <tr>
+            <th *ngFor="let column of columns">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of data; let i = index"
+            (click)="loadCharacter(i)"
+          >
+            <td *ngFor="let column of columns">
+              <ng-container [ngSwitch]="column">
+                <ng-container *ngSwitchCase="'Character'">
+                  <img
+                    [src]="item[column]"
+                    alt="{{ item.name }}"
+                    width="50"
+                    height="50"
+                  />
+                </ng-container>
 
-  <nav class="pagination">
-    <li class="page-item" [class.disabled]="currentPage === 1">
-      <a href="#" class="page-link" (click)="loadPage(1, $event)">First</a>
-    </li>
+                <ng-container *ngSwitchCase="'Created'">
+                  {{ item[column] | date }}
+                </ng-container>
 
-    <li class="page-item">
-      <a
-        href="#"
-        class="page-link"
-        [class.disabled]="!prev"
-        (click)="onPrev($event)"
-        >Previous</a
-      >
-    </li>
+                <ng-container *ngSwitchDefault>
+                  {{ item[column.toString()] }}
+                </ng-container>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <li
-      *ngFor="let page of getPageRange()"
-      class="page-item"
-      [class.active]="currentPage === page"
-    >
-      <a href="#" class="page-link" (click)="loadPage(page, $event)">{{
-        page
-      }}</a>
-    </li>
+    <div class="row mb-4">
+      <nav class="pagination justify-content-center">
+        <li
+          class="page-item"
+          [class.disabled]="currentPage === 1 || prev == null"
+        >
+          <a href="#" class="page-link" (click)="loadPage(1, $event)">First</a>
+        </li>
 
-    <li class="page-item">
-      <a
-        href="#"
-        class="page-link"
-        [class.disabled]="!next"
-        (click)="onNext($event)"
-        >Next</a
-      >
-    </li>
+        <li class="page-item">
+          <a
+            href="#"
+            class="page-link"
+            [class.disabled]="!prev"
+            (click)="onPrev($event)"
+            >Previous</a
+          >
+        </li>
 
-    <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <a href="#" class="page-link" (click)="loadPage(totalPages, $event)"
-        >Last</a
-      >
-    </li>
-  </nav>
+        <ng-container *ngIf="apiName == 'rick&morthy'">
+          <li
+            *ngFor="let page of getPageRange()"
+            class="page-item"
+            [class.active]="currentPage === page"
+          >
+            <a href="#" class="page-link" (click)="loadPage(page, $event)">{{
+              page
+            }}</a>
+          </li>
+        </ng-container>
+
+        <li class="page-item">
+          <a
+            href="#"
+            class="page-link"
+            [class.disabled]="!next"
+            (click)="onNext($event)"
+            >Next</a
+          >
+        </li>
+
+        <li
+          class="page-item"
+          [class.disabled]="currentPage === totalPages || next == null"
+        >
+          <a href="#" class="page-link" (click)="loadPage(totalPages, $event)"
+            >Last</a
+          >
+        </li>
+      </nav>
+    </div>
+  </div>
 </div>

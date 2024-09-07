@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="card" style="width: 80%">
+    <h5 class="card-header">Pokemon Details</h5>
+    <div class="row g-0">
+      <div class="col-md-4 d-flex justify-content-center align-items-center">
+        <img
+          src="{{ character?.sprites?.other?.dream_world?.front_default }}"
+          style="width: 10rem"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ character?.name }}</h5>
+          <div class="row mt-4">
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">ID</div>
+              <div class="col">
+                {{ character?.id }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Height</div>
+              <div class="col">
+                {{ character?.height }}
+              </div>
+            </div>
+            <div class="col-auto d-grid gap-2 align-items-center">
+              <div class="col fw-bold text-primary">weight</div>
+              <div class="col">
+                {{ character?.weight }}
+              </div>
+            </div>
+
+            <div class="col-auto d-grid gap-2">
+              <div class="col fw-bold text-primary">Species</div>
+              <div class="col">
+                {{ character?.species?.name }}
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <div class="col fw-bold text-primary">Order</div>
+              <div class="col">
+                {{ character?.order }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="col fw-bold text-primary">Abilities</div>
+              <div class="row d-flex">
+                <div class="col-auto" *ngFor="let item of character?.abilities">
+                  {{ item.ability.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col gap-2 align-items-center">
+              <div class="col fw-bold text-primary">Game_indices</div>
+              <div class="row">
+                <div
+                  class="col-sm-3"
+                  *ngFor="let item of character?.game_indices"
+                >
+                  {{ item.version.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted text-center mt-4">Poke Api Card</div>
+  </div>
+</div>
